@@ -144,3 +144,38 @@ header {
   background: #ffd6a5; /* beige */
   color: #000;
 }
+
+/* =========================
+   MOBILANPASSNING
+   ========================= */
+
+/* Standard (desktop) – behåll grid */
+#week {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+/* 📱 MOBIL */
+@media (max-width: 768px) {
+  #week {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+  }
+
+  .day {
+    min-width: 85%;
+    scroll-snap-align: start;
+  }
+
+  .day h2 {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 8px 0;
+    z-index: 2;
+  }
+}
