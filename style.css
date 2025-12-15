@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+}
+
+header {
+  padding: 15px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.corner {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+#week {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  padding: 15px;
+}
+
+.day {
+  background: white;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.day h2 {
+  text-align: center;
+}
+
+.lesson {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.time {
+  font-size: 12px;
+}
+
+.subject {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+/* Färger */
+.SV { background: #ffe066; }
+.MA { background: #74c0fc; }
+.NO { background: #8ce99a; }
+.SO { background: #f783ac; }
+.EN { background: #ffa94d; }
+.IDH { background: #63e6be; }
+.LUNCH { background: #ced4da; }
+.MENTOR { background: #b197fc; }
+
+#fuskBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 14px;
+  border-radius: 50%;
+  border: none;
+  background: red;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+/* ========= ÄMNESFÄRGER ========= */
+
+/* Mentor */
+.MENTOR {
+  background: #b197fc; /* lila */
+  color: #000;
+}
+
+/* Matte */
+.MA {
+  background: #74c0fc; /* blå */
+  color: #000;
+}
+
+/* Svenska */
+.SV {
+  background: #ffe066; /* gul */
+  color: #000;
+}
+
+/* NO */
+.NO {
+  background: #8ce99a; /* grön */
+  color: #000;
+}
+
+/* SO */
+.SO {
+  background: #faa2c1; /* rosa */
+  color: #000;
+}
+
+/* Engelska */
+.EN {
+  background: #ffa94d; /* orange */
+  color: #000;
+}
+
+/* Idrott */
+.IDH {
+  background: #63e6be; /* turkos */
+  color: #000;
+}
+
+/* Lunch */
+.LUNCH {
+  background: #ced4da; /* grå */
+  color: #000;
+}
+
+/* Block */
+.BLOCK {
+  background: #dee2e6; /* ljusgrå */
+  color: #000;
+  border: 2px dashed #adb5bd;
+}
+
+/* Slöjd */
+.SLÖJD {
+  background: #cdb4db; /* mjuk lila */
+  color: #000;
+}
+
+/* Musik / Block-lektioner */
+.MU1OCHBL1,
+.MU2OCHBL2 {
+  background: #ffd6a5; /* beige */
+  color: #000;
+}
