@@ -6,7 +6,6 @@
 <title>Klass 7A – Schema</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <style>
 :root{
   --bg:#f1f3f9;--bg2:#e8eaf2;
@@ -21,82 +20,6 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);}
-
-/* ═══════════════════ COUNTDOWN & LIVE EVENT BANNER ═══════════════════ */
-#schoolCountdownBanner {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  color: #fff;
-  padding: 16px 20px;
-  text-align: center;
-  position: relative;
-  z-index: 60;
-  box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-}
-.cd-title {
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.9;
-  margin-bottom: 8px;
-}
-.cd-timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-}
-.cd-unit {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  padding: 8px 14px;
-  border-radius: 10px;
-  min-width: 65px;
-}
-.cd-num {
-  font-size: 22px;
-  font-weight: 800;
-  font-family: 'JetBrains Mono', monospace;
-  display: block;
-}
-.cd-lbl {
-  font-size: 10px;
-  text-transform: uppercase;
-  opacity: 0.8;
-  font-weight: 600;
-}
-.cd-colon {
-  font-size: 20px;
-  font-weight: 800;
-  opacity: 0.6;
-}
-
-/* Live Event Style */
-#liveEventBox {
-  display: none;
-  animation: popIn 0.5s ease-out;
-}
-@keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-.live-big-title {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  margin-bottom: 4px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-.live-sub-title {
-  font-size: 18px;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.2);
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 50px;
-  margin-top: 6px;
-  backdrop-filter: blur(4px);
-}
 
 /* ═══════════════════ NAV (desktop) ═══════════════════ */
 nav{
@@ -391,7 +314,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 /* Mobile lesson list */
 #mobileLessonList{
   padding:12px 14px;
-  padding-bottom:90px;
+  padding-bottom:90px; /* space for bottom nav */
 }
 
 .m-day-label{
@@ -412,10 +335,12 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 .m-off-card p{font-size:13px;color:var(--muted);}
 
 /* Mobile lesson card */
+/* Mobile lesson card — styled like desktop but big */
 .m-lesson{
   border-radius:14px;padding:14px 16px;
   margin-bottom:10px;box-shadow:var(--shadow);
   position:relative;overflow:hidden;transition:.12s;
+  /* no border — use background color like desktop */
   border:none;
 }
 .m-lesson:active{transform:scale(.99);}
@@ -426,6 +351,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 }
 .m-lesson.m-next{outline:2px dashed rgba(0,0,0,.4);}
 
+/* No side stripe — full colored background like desktop */
 .m-lesson-color{display:none;}
 
 .m-lesson-body{flex:1;min-width:0;}
@@ -479,11 +405,13 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 }
 
 @media(max-width:768px){
+  /* Hide desktop elements */
   nav{display:none!important;}
   #viewSchema,#viewAdmin{display:none!important;}
   #mobileHeader{display:flex!important;}
   #mobileNav{display:block!important;}
 
+  /* Bigger header */
   #mobileHeader{padding:14px 18px;}
   .mhdr-logo{width:42px;height:42px;}
   .mhdr-logo i{font-size:18px;}
@@ -491,9 +419,11 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   .mhdr-title span{font-size:12px;}
   #mobileLivePill{font-size:13px;padding:7px 14px;}
 
+  /* Bigger day tabs */
   #mobileDayTabs{padding:0 6px;}
   .mday-tab{font-size:15px;padding:14px 18px;font-weight:700;}
 
+  /* Lesson cards — match desktop style, reasonable size */
   #mobileLessonList{padding:12px 14px;padding-bottom:100px;}
   .m-day-label{font-size:13px;margin-bottom:10px;font-weight:700;}
   .m-lesson{padding:12px 14px;border-radius:12px;margin-bottom:8px;}
@@ -506,9 +436,11 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   .m-off-card h3{font-size:18px;margin-bottom:6px;}
   .m-off-card p{font-size:14px;}
 
+  /* Bigger admin tabs */
   .m-atab{font-size:14px;padding:14px 16px;gap:6px;}
   .m-atab i{font-size:15px;}
 
+  /* Bigger admin content */
   .m-admin-content{padding:16px;}
   .stat-card{padding:18px 12px;border-radius:14px;}
   .stat-num{font-size:32px;}
@@ -534,9 +466,11 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   .subj-pill{font-size:13px;padding:5px 13px;}
   .time-tag{font-size:13px;padding:4px 9px;}
 
+  /* Bottom nav bigger */
   .mnav-btn{font-size:12px;padding:8px 22px;}
   .mnav-btn i{font-size:26px;}
 
+  /* Toast above bottom nav */
   #toast{
     left:50%;right:auto;bottom:90px;max-width:88vw;
     transform:translateX(-50%) translateY(60px);
@@ -544,6 +478,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   }
   #toast.show{transform:translateX(-50%) translateY(0);}
 
+  /* Modal slides up from bottom, bigger text */
   .modal-bg{align-items:flex-end;}
   .modal{
     border-radius:24px 24px 0 0;
@@ -557,11 +492,6 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   #loginCode{font-size:17px;padding:14px 14px 14px 44px;}
   .login-icon-wrap{width:66px;height:66px;border-radius:18px;}
   .login-icon-wrap i{font-size:24px;}
-  
-  .cd-num { font-size: 18px; }
-  .cd-unit { min-width: 50px; padding: 6px 8px; }
-  .live-big-title { font-size: 22px; }
-  .live-sub-title { font-size: 15px; }
 }
 
 @media(max-width:960px) and (min-width:769px){
@@ -580,26 +510,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 </head>
 <body>
 
-<div id="schoolCountdownBanner">
-  <div id="countdownBox">
-    <div class="cd-title"><i class="fa-solid fa-graduation-cap"></i> Skolstart 17 augusti kl 09:30</div>
-    <div class="cd-timer">
-      <div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-lbl">Dagar</span></div>
-      <span class="cd-colon">:</span>
-      <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-lbl">Timmar</span></div>
-      <span class="cd-colon">:</span>
-      <div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-lbl">Min</span></div>
-      <span class="cd-colon">:</span>
-      <div class="cd-unit"><span class="cd-num" id="cdSecs">00</span><span class="cd-lbl">Sek</span></div>
-    </div>
-  </div>
-  
-  <div id="liveEventBox">
-    <div class="live-big-title">LYCKA TILL! 🎉</div>
-    <div class="live-sub-title"><i class="fa-solid fa-spinner fa-spin"></i> Inväntar nytt schema!</div>
-  </div>
-</div>
-
+<!-- ══════════ MOBILE HEADER ══════════ -->
 <div id="mobileHeader">
   <div class="mhdr-brand">
     <div class="mhdr-logo"><i class="fa-solid fa-calendar-days"></i></div>
@@ -611,11 +522,15 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   </div>
 </div>
 
+<!-- ══════════ MOBILE SCHEMA VIEW ══════════ -->
 <div id="mobileSchemaView">
+  <!-- Day tabs -->
   <div id="mobileDayTabs"></div>
+  <!-- Lessons -->
   <div id="mobileLessonList"></div>
 </div>
 
+<!-- ══════════ MOBILE ADMIN VIEW ══════════ -->
 <div id="mobileAdminView">
   <div class="m-admin-tabs" id="mAdminTabs">
     <button class="m-atab active" onclick="mAdminPage('oversikt',this)"><i class="fa-solid fa-chart-pie"></i> Översikt</button>
@@ -627,6 +542,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   <div class="m-admin-content" id="mAdminContent"></div>
 </div>
 
+<!-- ══════════ MOBILE BOTTOM NAV ══════════ -->
 <div id="mobileNav">
   <div class="mnav-inner">
     <button class="mnav-btn active" id="mNavSchema" onclick="mShowView('schema')">
@@ -638,6 +554,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   </div>
 </div>
 
+<!-- ══════════ ADMIN LOGIN MODAL ══════════ -->
 <div id="adminLoginModal" class="modal-bg">
   <div class="modal" style="text-align:center;">
     <div class="login-icon-wrap"><i class="fa-solid fa-lock"></i></div>
@@ -653,6 +570,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   </div>
 </div>
 
+<!-- ══════════ EDIT MODAL ══════════ -->
 <div class="modal-bg" id="editModal">
   <div class="modal">
     <h3><i class="fa-solid fa-pen" style="color:var(--accent);margin-right:7px;font-size:16px;"></i>Redigera lektion</h3>
@@ -669,6 +587,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   </div>
 </div>
 
+<!-- ══════════ DESKTOP NAV ══════════ -->
 <nav>
   <div class="nav-brand">
     <div class="nav-logo"><i class="fa-solid fa-calendar-days"></i></div>
@@ -682,8 +601,10 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   </div>
 </nav>
 
+<!-- ══════════ DESKTOP SCHEMA ══════════ -->
 <div id="viewSchema"><div id="week"></div></div>
 
+<!-- ══════════ DESKTOP ADMIN ══════════ -->
 <div id="viewAdmin">
   <div class="admin-layout">
     <aside class="admin-sidebar">
@@ -744,86 +665,502 @@ const DAYS=['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'];
 const SCHOOL_DAYS=['Måndag','Tisdag','Onsdag','Torsdag','Fredag'];
 
 const DEFAULT_SCHEMA={
-  "Måndag":[{start:"09:00",end:"09:20",subject:"MENTOR",teacher:""},{start:"09:20",end:"10:20",subject:"MA",teacher:""},{start:"10:30",end:"11:30",subject:"NO",teacher:""}],
-  "Tisdag":[],
-  "Onsdag":[],
-  "Torsdag":[],
-  "Fredag":[]
+  "Måndag":[{start:"09:00",end:"09:20",subject:"MENTOR",teacher:""},{start:"09:20",end:"10:20",subject:"MA",teacher:""},{start:"10:30",end:"11:30",subject:"SV",teacher:""},{start:"11:40",end:"12:30",subject:"SO",teacher:""},{start:"12:30",end:"12:50",subject:"LUNCH",teacher:""},{start:"13:10",end:"13:50",subject:"NO",teacher:""},{start:"14:00",end:"14:50",subject:"EN",teacher:""}],
+  "Tisdag":[{start:"08:20",end:"09:10",subject:"BLOCK",teacher:""},{start:"09:15",end:"10:15",subject:"MU1OCHBL1",teacher:""},{start:"10:20",end:"11:20",subject:"MU2OCHBL2",teacher:""},{start:"11:25",end:"12:25",subject:"MA",teacher:""},{start:"12:25",end:"12:45",subject:"LUNCH",teacher:""},{start:"13:05",end:"13:45",subject:"SV",teacher:""},{start:"13:55",end:"14:35",subject:"SO",teacher:""}],
+  "Onsdag":[{start:"08:20",end:"09:20",subject:"SV",teacher:""},{start:"09:40",end:"10:40",subject:"MA",teacher:""},{start:"10:50",end:"11:40",subject:"SO",teacher:""},{start:"11:40",end:"12:00",subject:"LUNCH",teacher:""},{start:"12:25",end:"13:45",subject:"SLÖJD",teacher:""},{start:"13:50",end:"14:50",subject:"EN",teacher:""}],
+  "Torsdag":[{start:"08:20",end:"09:30",subject:"IDH",teacher:""},{start:"09:50",end:"10:50",subject:"NO",teacher:""},{start:"11:15",end:"12:15",subject:"BLOCK",teacher:""},{start:"12:15",end:"12:35",subject:"LUNCH",teacher:""},{start:"12:50",end:"13:40",subject:"NO",teacher:""},{start:"13:45",end:"14:30",subject:"SO",teacher:""}],
+  "Fredag":[{start:"08:00",end:"09:10",subject:"IDH",teacher:""},{start:"09:20",end:"10:10",subject:"BLOCK",teacher:""},{start:"10:20",end:"11:20",subject:"NO",teacher:""},{start:"11:30",end:"11:50",subject:"LUNCH",teacher:""},{start:"12:10",end:"12:50",subject:"SO",teacher:""},{start:"13:00",end:"13:40",subject:"MA",teacher:""}]
 };
+const DEFAULT_COLORS={MA:"#3b82f6",SV:"#eab308",SO:"#f43f5e",NO:"#22c55e",EN:"#f97316",IDH:"#10b981","SLÖJD":"#a855f7",MENTOR:"#8b5cf6",LUNCH:"#374151",BLOCK:"#9ca3af",MU1OCHBL1:"#fb923c",MU2OCHBL2:"#fb923c"};
+const DEFAULT_DISABLED={Måndag:false,Tisdag:false,Onsdag:false,Torsdag:false,Fredag:false};
+const DEFAULT_LABELS={Måndag:'',Tisdag:'',Onsdag:'',Torsdag:'',Fredag:''};
 
-/* ═══════════════════ COUNTDOWN & LIVE EVENT LOGIC ═══════════════════ */
-let confettiFired = false;
+let schema   =JSON.parse(localStorage.getItem('s7a_schema')  ||'null')||JSON.parse(JSON.stringify(DEFAULT_SCHEMA));
+let colors   =JSON.parse(localStorage.getItem('s7a_colors')  ||'null')||JSON.parse(JSON.stringify(DEFAULT_COLORS));
+let disabled =JSON.parse(localStorage.getItem('s7a_disabled')||'null')||JSON.parse(JSON.stringify(DEFAULT_DISABLED));
+let dayLabels=JSON.parse(localStorage.getItem('s7a_labels')  ||'null')||JSON.parse(JSON.stringify(DEFAULT_LABELS));
+let changes  =JSON.parse(localStorage.getItem('s7a_changes') ||'[]');
+let currentDay='Måndag';
+let editDay=null,editIdx=null;
+let adminUnlocked=false;
+let mobileView='schema';
+let mCurrentDay=DAYS[new Date().getDay()]||'Måndag';
+if(!schema[mCurrentDay]) mCurrentDay='Måndag';
 
-function updateCountdown() {
-  const now = new Date();
-  
-  // Månad i JS är 0-indexerad (0 = Jan, 7 = Aug).
-  // Sätter måldatum till 17 Augusti kl 09:30:00 i år.
-  const targetDate = new Date(now.getFullYear(), 7, 17, 9, 30, 0);
+function save(){
+  localStorage.setItem('s7a_schema',  JSON.stringify(schema));
+  localStorage.setItem('s7a_colors',  JSON.stringify(colors));
+  localStorage.setItem('s7a_disabled',JSON.stringify(disabled));
+  localStorage.setItem('s7a_labels',  JSON.stringify(dayLabels));
+  localStorage.setItem('s7a_changes', JSON.stringify(changes.slice(-10)));
+}
+function logChange(msg){changes.push({msg,time:new Date().toLocaleString('sv-SE')});save();}
 
-  const diff = targetDate - now;
+// ── UTILS ──
+function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
+function getColor(s){return colors[s]||'#9ca3af';}
+function textCol(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return(r*299+g*587+b*114)/1000>145?'#111827':'#ffffff';
+}
+function toast(msg,icon='fa-check'){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.querySelector('.t-icon').className=`t-icon fa-solid ${icon}`;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
+}
+function isMobile(){return window.innerWidth<=768;}
 
-  if (diff <= 0) {
-    // Tiden har tagit slut -> Visa Live Event!
-    document.getElementById('countdownBox').style.display = 'none';
-    document.getElementById('liveEventBox').style.display = 'block';
-
-    if (!confettiFired) {
-      fireConfetti();
-      confettiFired = true;
-    }
+// ── LOGIN ──
+function openAdminLogin(){
+  if(adminUnlocked){if(isMobile())mShowView('admin');else showView('admin');return;}
+  document.getElementById('adminLoginModal').classList.add('open');
+  setTimeout(()=>document.getElementById('loginCode').focus(),200);
+}
+function closeAdminLogin(){
+  document.getElementById('adminLoginModal').classList.remove('open');
+  document.getElementById('loginCode').value='';
+  document.getElementById('loginError').style.opacity='0';
+}
+function doLogin(){
+  const val=document.getElementById('loginCode').value;
+  if(val===PASS){
+    adminUnlocked=true;closeAdminLogin();
+    document.getElementById('btnLogout').style.display='flex';
+    if(isMobile())mShowView('admin');else showView('admin');
   } else {
-    // Räkna ner
-    document.getElementById('countdownBox').style.display = 'block';
-    document.getElementById('liveEventBox').style.display = 'none';
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('cdDays').innerText = String(d).padStart(2, '0');
-    document.getElementById('cdHours').innerText = String(h).padStart(2, '0');
-    document.getElementById('cdMins').innerText = String(m).padStart(2, '0');
-    document.getElementById('cdSecs').innerText = String(s).padStart(2, '0');
+    const inp=document.getElementById('loginCode');
+    inp.classList.remove('shake');void inp.offsetWidth;inp.classList.add('shake');
+    document.getElementById('loginError').style.opacity='1';
+    inp.value='';
+    setTimeout(()=>document.getElementById('loginError').style.opacity='0',3000);
   }
 }
+function logout(){
+  adminUnlocked=false;
+  document.getElementById('btnLogout').style.display='none';
+  if(isMobile())mShowView('schema');else showView('schema');
+  toast('Utloggad från admin','fa-arrow-right-from-bracket');
+}
 
-function fireConfetti() {
-  if (typeof confetti === 'function') {
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
+// ══════════════════════════════════════════
+// MOBILE
+// ══════════════════════════════════════════
+function mShowView(v){
+  if(v==='admin'&&!adminUnlocked){openAdminLogin();return;}
+  mobileView=v;
+  document.getElementById('mobileSchemaView').style.display=v==='schema'?'block':'none';
+  document.getElementById('mobileAdminView').style.display =v==='admin' ?'block':'none';
+  document.getElementById('mNavSchema').classList.toggle('active',v==='schema');
+  document.getElementById('mNavAdmin').classList.toggle('active',v==='admin');
+  if(v==='schema'){renderMobileDayTabs();renderMobileLessons();}
+  if(v==='admin'){mAdminPage('oversikt',document.querySelector('.m-atab'));}
+}
 
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 }
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 }
-      });
+function renderMobileDayTabs(){
+  const tabs=document.getElementById('mobileDayTabs');
+  tabs.innerHTML='';
+  SCHOOL_DAYS.forEach(day=>{
+    const b=document.createElement('button');
+    const isOff=disabled[day];
+    b.className='mday-tab'+(day===mCurrentDay?' active':'')+(isOff?' off-tab':'');
+    b.textContent=day.slice(0,3);
+    b.onclick=()=>{mCurrentDay=day;renderMobileDayTabs();renderMobileLessons();};
+    tabs.appendChild(b);
+  });
+}
 
-      if (Date.now() < animationEnd) {
-        requestAnimationFrame(frame);
-      }
-    })();
+function renderMobileLessons(){
+  const list=document.getElementById('mobileLessonList');
+  const now=new Date(),min=now.getHours()*60+now.getMinutes();
+  const todayName=DAYS[now.getDay()];
+  list.innerHTML='';
+
+  // Day label
+  const lbl=document.createElement('div');
+  lbl.className='m-day-label';
+  lbl.innerHTML=`<i class="fa-solid fa-calendar-day"></i>${mCurrentDay}`;
+  list.appendChild(lbl);
+
+  // Off day
+  if(disabled[mCurrentDay]){
+    const card=document.createElement('div');
+    card.className='m-off-card';
+    const label=dayLabels[mCurrentDay]||'Ledigt';
+    card.innerHTML=`<i class="fa-solid fa-door-closed"></i><h3>${label}</h3><p>Inga lektioner denna dag</p>`;
+    list.appendChild(card);
+    return;
   }
+
+  const lessons=schema[mCurrentDay]||[];
+  if(!lessons.length){
+    const e=document.createElement('div');
+    e.className='empty-state';
+    e.innerHTML='<i class="fa-solid fa-calendar-xmark"></i><p>Inga lektioner</p>';
+    list.appendChild(e);return;
+  }
+
+  let curIdx=null,nxtIdx=null;
+  if(mCurrentDay===todayName){
+    lessons.forEach((l,i)=>{
+      const s=toMin(l.start),e=toMin(l.end);
+      if(min>=s&&min<e) curIdx=i;
+      if(min<s&&nxtIdx===null) nxtIdx=i;
+    });
+  }
+
+  lessons.forEach((l,i)=>{
+    const bg=getColor(l.subject),fg=textCol(bg);
+    const isCur=i===curIdx,isNxt=i===nxtIdx;
+    const card=document.createElement('div');
+    card.className='m-lesson'+(isCur?' m-current':isNxt?' m-next':'');
+    card.style.background=bg;
+    card.style.color=fg;
+
+    card.innerHTML=`
+      <div class="m-lesson-body">
+        <div class="m-lesson-time">${l.start}</div>
+        <div class="m-lesson-name">${l.subject}</div>
+        ${l.teacher?`<div class="m-lesson-teacher"><i class="fa-solid fa-user" style="font-size:10px"></i> ${l.teacher}</div>`:''}
+        <div class="m-lesson-time" style="margin-top:4px;">${l.end}</div>
+      </div>
+      ${isCur?'<div class="m-now-pill">Nu</div>':isNxt?'<div class="m-next-pill">Nästa</div>':''}
+    `;
+    list.appendChild(card);
+  });
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-/* Bas-vyer för framtida laddning */
-function showView(view) {
-  document.getElementById('viewSchema').style.display = view === 'schema' ? 'block' : 'none';
-  document.getElementById('viewAdmin').style.display = view === 'admin' ? 'block' : 'none';
+function updateMobileLive(){
+  const now=new Date(),min=now.getHours()*60+now.getMinutes();
+  const today=DAYS[now.getDay()];
+  const el=document.getElementById('mobileLiveText');
+  if(!schema[today]||disabled[today]){el.textContent='Ingen skola';return;}
+  let cur=null,nxt=null;
+  for(const l of schema[today]){
+    const s=toMin(l.start),e=toMin(l.end);
+    if(min>=s&&min<e) cur=l;
+    if(min<s&&!nxt) nxt=l;
+  }
+  if(cur) el.textContent=`Nu: ${cur.subject}`;
+  else if(nxt) el.textContent=`Nästa: ${nxt.subject}`;
+  else el.textContent='Slut för idag';
 }
-showView('schema');
+
+// Mobile admin pages
+function mAdminPage(page, btn){
+  document.querySelectorAll('.m-atab').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const c=document.getElementById('mAdminContent');
+  c.innerHTML='';
+  if(page==='oversikt') c.innerHTML=buildOversiktHTML();
+  if(page==='lektioner') c.innerHTML=buildMLektionerHTML();
+  if(page==='ny') c.innerHTML=buildMNyHTML();
+  if(page==='dagar') c.innerHTML=buildMDagarHTML();
+  if(page==='farger') c.innerHTML=buildMFargerHTML();
+}
+
+function buildOversiktHTML(){
+  const all=Object.values(schema).flat();
+  const active=SCHOOL_DAYS.filter(d=>!disabled[d]).length;
+  const stats=[
+    {n:all.length,l:'Lektioner'},{n:active,l:'Aktiva dagar'},
+    {n:new Set(all.map(l=>l.subject)).size,l:'Ämnen'},{n:all.filter(l=>l.teacher).length,l:'Med lärare'}
+  ];
+  return`
+    <div class="stats-row" style="margin-top:4px;">${stats.map(s=>`<div class="stat-card"><div class="stat-num">${s.n}</div><div class="stat-label">${s.l}</div></div>`).join('')}</div>
+    <div class="card">
+      <div class="card-title"><i class="fa-solid fa-clock-rotate-left"></i> Ändringar</div>
+      ${changes.length===0
+        ?'<div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i><p>Inga ändringar ännu.</p></div>'
+        :changes.slice().reverse().map(c=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);"><i class="fa-solid fa-circle-dot" style="color:var(--accent);font-size:12px;flex-shrink:0;"></i><div><div style="font-size:13px;">${c.msg}</div><div style="font-size:11px;color:var(--muted2);margin-top:1px;">${c.time}</div></div></div>`).join('')}
+    </div>`;
+}
+
+function buildMLektionerHTML(){
+  const dayBtns=SCHOOL_DAYS.map(d=>`<button onclick="mSelectDay('${d}',this)" class="btn ${d===currentDay?'btn-primary':'btn-ghost'} btn-sm" style="${disabled[d]?'opacity:.4':''};">${d.slice(0,3)}</button>`).join('');
+  const list=schema[currentDay]||[];
+  const rows=list.length===0
+    ?'<div class="empty-state"><i class="fa-solid fa-calendar-xmark"></i><p>Inga lektioner på '+currentDay+'</p></div>'
+    :list.map((l,i)=>{
+      const bg=getColor(l.subject),fg=textCol(bg);
+      return`<div class="m-lesson" style="background:${bg};color:${fg};margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:11px;opacity:.7;font-family:'JetBrains Mono',monospace;">${l.start}</div>
+          <div style="font-size:20px;font-weight:800;margin:2px 0;">${l.subject}</div>
+          ${l.teacher?`<div style="font-size:12px;opacity:.75;display:flex;align-items:center;gap:5px;"><i class="fa-solid fa-user" style="font-size:10px"></i>${l.teacher}</div>`:''}
+          <div style="font-size:11px;opacity:.7;font-family:'JetBrains Mono',monospace;margin-top:2px;">${l.end}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <button class="btn btn-xs" style="background:rgba(255,255,255,0.25);color:${fg};border:none;" onclick="openEdit('${currentDay}',${i})"><i class="fa-solid fa-pen"></i></button>
+          <button class="btn btn-xs" style="background:rgba(0,0,0,0.2);color:${fg};border:none;" onclick="mDeleteLesson('${currentDay}',${i})"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </div>`;
+    }).join('');
+  return`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;">${dayBtns}</div>${rows}`;
+}
+
+function mSelectDay(day,btn){
+  currentDay=day;
+  document.querySelectorAll('#mAdminContent .btn').forEach(b=>{b.className=b.className.replace('btn-primary','btn-ghost');});
+  if(btn){btn.className=btn.className.replace('btn-ghost','btn-primary');}
+  document.getElementById('mAdminContent').innerHTML=buildMLektionerHTML();
+}
+
+function mDeleteLesson(day,idx){
+  const l=schema[day][idx];
+  if(!confirm(`Ta bort ${l.subject}?`)) return;
+  schema[day].splice(idx,1);save();renderSchema();buildSidebarDays();
+  logChange(`Tog bort ${l.subject} (${day})`);toast(`${l.subject} borttagen`,'fa-trash');
+  document.getElementById('mAdminContent').innerHTML=buildMLektionerHTML();
+}
+
+function buildMNyHTML(){
+  const dayOpts=SCHOOL_DAYS.map(d=>`<option>${d}</option>`).join('');
+  return`<div class="card">
+    <div class="card-title"><i class="fa-solid fa-pen-to-square"></i> Fyll i uppgifter</div>
+    <div class="form-grid" style="grid-template-columns:1fr;">
+      <div class="fg"><label>Dag</label><select id="nDay">${dayOpts}</select></div>
+      <div class="fg"><label>Ämne</label><input id="nSubject" placeholder="t.ex. MA" maxlength="20"></div>
+      <div class="fg"><label>Lärare</label><input id="nTeacher" placeholder="t.ex. Anna Svensson"></div>
+      <div class="fg"><label>Starttid</label><input id="nStart" type="time" value="08:00"></div>
+      <div class="fg"><label>Sluttid</label><input id="nEnd" type="time" value="09:00"></div>
+    </div>
+    <div style="margin-top:16px;"><button class="btn btn-primary" style="width:100%;" onclick="addLesson()"><i class="fa-solid fa-plus"></i> Lägg till lektion</button></div>
+  </div>`;
+}
+
+function buildMDagarHTML(){
+  return SCHOOL_DAYS.map(day=>{
+    const isOff=disabled[day],lbl=dayLabels[day]||'';
+    return`<div class="day-manage-card${isOff?' disabled':''}" style="margin-bottom:10px;">
+      <div class="day-mc-head">
+        <h3>${day}</h3>
+        <label class="toggle-day">
+          <input type="checkbox" ${isOff?'':'checked'} onchange="toggleDay('${day}',this.checked)">
+          <span class="toggle-track"></span>
+        </label>
+      </div>
+      <div class="day-mc-meta">${schema[day].length} lektioner &nbsp;·&nbsp;
+        ${isOff?'<span style="color:var(--accent2)">Stängd</span>':'<span style="color:var(--accent3)">Aktiv</span>'}
+      </div>
+      ${isOff?`<div style="margin-top:10px;">
+        <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:5px;"><i class="fa-solid fa-tag" style="margin-right:4px;"></i>Text som visas</label>
+        <input class="label-input" placeholder="t.ex. Studiedag, Lov…" value="${lbl}" oninput="updateLabel('${day}',this.value)">
+      </div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function buildMFargerHTML(){
+  const subjects=new Set();
+  Object.values(schema).forEach(d=>d.forEach(l=>subjects.add(l.subject)));
+  return [...subjects].map(s=>{
+    const col=colors[s]||'#9ca3af';
+    return`<div class="color-card" style="margin-bottom:8px;">
+      <div class="col-swatch" style="background:${col}" id="sw-${s}"></div>
+      <div class="col-info"><strong>${s}</strong><small id="cl-${s}">${col}</small></div>
+      <input type="color" class="col-picker" value="${col}" oninput="updateColor('${s}',this.value)">
+    </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════
+// DESKTOP
+// ══════════════════════════════════════════
+function showView(v){
+  if(v==='admin'&&!adminUnlocked){openAdminLogin();return;}
+  document.getElementById('viewSchema').style.display=v==='schema'?'block':'none';
+  document.getElementById('viewAdmin').style.display =v==='admin' ?'block':'none';
+  document.getElementById('btnSchema').className=v==='schema'?'btn btn-primary':'btn btn-ghost';
+  document.getElementById('btnAdmin').className =v==='admin' ?'btn btn-primary':'btn btn-ghost';
+  if(v==='schema') renderSchema();
+  if(v==='admin')  initAdmin();
+}
+
+function renderSchema(){
+  const wrap=document.getElementById('week');wrap.innerHTML='';
+  const today=DAYS[new Date().getDay()];
+  SCHOOL_DAYS.forEach(day=>{
+    const isToday=day===today,isOff=disabled[day];
+    const col=document.createElement('div');
+    col.className='day-col'+(isToday?' today-col':'')+(isOff?' off-day-col':'');
+    col.dataset.day=day;
+    col.innerHTML=`<div class="day-head"><h2>${day}</h2>${isToday?'<span class="today-badge">Idag</span>':''}${isOff?'<span style="font-size:10px;font-weight:700;background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:50px;">Stängd</span>':''}</div>${isOff?`<div class="off-day-banner"><i class="fa-solid fa-door-closed"></i><span>${dayLabels[day]||'Ledigt'}</span></div>`:'<div class="lessons-wrap"></div>'}`;
+    if(!isOff){
+      schema[day].forEach(l=>{
+        const bg=getColor(l.subject),fg=textCol(bg);
+        const div=document.createElement('div');
+        div.className='lesson';div.dataset.start=l.start;div.dataset.day=day;
+        div.style.background=bg;div.style.color=fg;
+        div.innerHTML=`<div class="l-time">${l.start}</div><div class="l-name">${l.subject}</div>${l.teacher?`<div class="l-teacher"><i class="fa-solid fa-user" style="font-size:8px"></i> ${l.teacher}</div>`:''}<div class="l-time">${l.end}</div>`;
+        col.querySelector('.lessons-wrap').appendChild(div);
+      });
+    }
+    wrap.appendChild(col);
+  });
+  updateLive();
+}
+
+function updateLive(){
+  const now=new Date(),min=now.getHours()*60+now.getMinutes(),today=DAYS[now.getDay()];
+  document.querySelectorAll('.lesson').forEach(l=>l.classList.remove('current','next-up'));
+  const el=document.getElementById('liveText');
+  if(!schema[today]||disabled[today]){el.textContent='Ingen skola';return;}
+  let cur=null,nxt=null;
+  for(const l of schema[today]){const s=toMin(l.start),e=toMin(l.end);if(min>=s&&min<e)cur=l;if(min<s&&!nxt)nxt=l;}
+  if(cur){document.querySelectorAll(`.lesson[data-day="${today}"]`).forEach(d=>{if(d.dataset.start===cur.start)d.classList.add('current');});el.textContent=`Nu: ${cur.subject}`;}
+  else if(nxt){document.querySelectorAll(`.lesson[data-day="${today}"]`).forEach(d=>{if(d.dataset.start===nxt.start)d.classList.add('next-up');});el.textContent=`Nästa: ${nxt.subject}`;}
+  else el.textContent='Slut för idag';
+}
+
+function initAdmin(){buildSidebarDays();populateDaySelect();adminPage('oversikt');}
+
+function buildSidebarDays(){
+  const el=document.getElementById('sidebarDays');el.innerHTML='';
+  SCHOOL_DAYS.forEach(day=>{
+    const div=document.createElement('div');
+    div.className='sidebar-day'+(day===currentDay?' active':'');
+    div.onclick=()=>{currentDay=day;buildSidebarDays();adminPage('lektioner');renderLessons();};
+    div.innerHTML=`${day}<span class="day-badge">${disabled[day]?'Av':schema[day].length}</span>`;
+    el.appendChild(div);
+  });
+}
+
+function populateDaySelect(){
+  const sel=document.getElementById('nDay');if(!sel)return;sel.innerHTML='';
+  SCHOOL_DAYS.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=d;sel.appendChild(o);});
+}
+
+function adminPage(page){
+  ['oversikt','lektioner','ny','dagar','farger'].forEach(p=>{
+    const el=document.getElementById('page'+p.charAt(0).toUpperCase()+p.slice(1));
+    if(el) el.style.display=p===page?'block':'none';
+    const si=document.getElementById('si-'+p);if(si)si.classList.toggle('active',p===page);
+  });
+  if(page==='oversikt') renderOversikt();
+  if(page==='lektioner'){buildDayBtnRow();renderLessons();}
+  if(page==='dagar')    renderDaysGrid();
+  if(page==='farger')   renderColorGrid();
+}
+
+function renderOversikt(){
+  const all=Object.values(schema).flat(),active=SCHOOL_DAYS.filter(d=>!disabled[d]).length;
+  document.getElementById('statsRow').innerHTML=`<div class="stat-card"><div class="stat-num">${all.length}</div><div class="stat-label">Totala lektioner</div></div><div class="stat-card"><div class="stat-num">${active}</div><div class="stat-label">Aktiva dagar</div></div><div class="stat-card"><div class="stat-num">${new Set(all.map(l=>l.subject)).size}</div><div class="stat-label">Ämnen</div></div><div class="stat-card"><div class="stat-num">${all.filter(l=>l.teacher).length}</div><div class="stat-label">Med lärare</div></div>`;
+  const rcEl=document.getElementById('recentChanges');
+  rcEl.innerHTML=changes.length===0?'<div class="empty-state"><i class="fa-solid fa-clock-rotate-left"></i><p>Inga ändringar ännu.</p></div>':changes.slice().reverse().map(c=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);"><i class="fa-solid fa-circle-dot" style="color:var(--accent);font-size:13px;flex-shrink:0;"></i><div><div style="font-size:13px;">${c.msg}</div><div style="font-size:11px;color:var(--muted2);margin-top:2px;">${c.time}</div></div></div>`).join('');
+}
+
+function buildDayBtnRow(){
+  const row=document.getElementById('dayBtnRow');if(!row)return;row.innerHTML='';
+  SCHOOL_DAYS.forEach(day=>{
+    const b=document.createElement('button');
+    b.className='btn '+(day===currentDay?'btn-primary':'btn-ghost')+' btn-sm';
+    b.textContent=day;if(disabled[day])b.style.opacity='.45';
+    b.onclick=()=>{currentDay=day;buildDayBtnRow();renderLessons();buildSidebarDays();};
+    row.appendChild(b);
+  });
+}
+
+function renderLessons(){
+  const tbody=document.getElementById('lessonsBody');if(!tbody)return;tbody.innerHTML='';
+  const list=schema[currentDay]||[];
+  if(!list.length){tbody.innerHTML=`<tr><td colspan="5"><div class="empty-state"><i class="fa-solid fa-calendar-xmark"></i><p>Inga lektioner på ${currentDay}</p></div></td></tr>`;return;}
+  list.forEach((l,i)=>{
+    const bg=getColor(l.subject),fg=textCol(bg);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><span class="subj-pill" style="background:${bg};color:${fg}">${l.subject}</span></td><td>${l.teacher||'<span style="color:var(--muted2);font-style:italic;font-size:12px;">–</span>'}</td><td><span class="time-tag">${l.start}</span></td><td><span class="time-tag">${l.end}</span></td><td><div style="display:flex;gap:5px;"><button class="btn btn-ghost btn-xs" onclick="openEdit('${currentDay}',${i})"><i class="fa-solid fa-pen"></i></button><button class="btn btn-danger btn-xs" onclick="deleteLesson('${currentDay}',${i})"><i class="fa-solid fa-trash"></i></button></div></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function openEdit(day,idx){
+  editDay=day;editIdx=idx;
+  const l=schema[day][idx];
+  document.getElementById('eSubject').value=l.subject;
+  document.getElementById('eTeacher').value=l.teacher||'';
+  document.getElementById('eStart').value=l.start;
+  document.getElementById('eEnd').value=l.end;
+  document.getElementById('editModal').classList.add('open');
+}
+function closeModal(){document.getElementById('editModal').classList.remove('open');}
+function saveEdit(){
+  const l=schema[editDay][editIdx];
+  l.subject=document.getElementById('eSubject').value.trim().toUpperCase()||l.subject;
+  l.teacher=document.getElementById('eTeacher').value.trim();
+  l.start=document.getElementById('eStart').value;
+  l.end=document.getElementById('eEnd').value;
+  save();closeModal();renderLessons();renderSchema();buildSidebarDays();
+  if(isMobile()){renderMobileLessons();}
+  logChange(`Redigerade ${l.subject} (${editDay})`);toast('Lektion sparad!','fa-check');
+}
+function deleteLesson(day,idx){
+  const l=schema[day][idx];
+  if(!confirm(`Ta bort ${l.subject}?`)) return;
+  schema[day].splice(idx,1);save();renderLessons();renderSchema();buildSidebarDays();renderOversikt();
+  logChange(`Tog bort ${l.subject} (${day})`);toast(`${l.subject} borttagen`,'fa-trash');
+}
+function addLesson(){
+  const dayEl=document.getElementById('nDay');
+  const day=dayEl?dayEl.value:currentDay;
+  const subject=document.getElementById('nSubject').value.trim().toUpperCase();
+  const teacher=document.getElementById('nTeacher').value.trim();
+  const start=document.getElementById('nStart').value;
+  const end=document.getElementById('nEnd').value;
+  if(!subject){toast('Ange ett ämne!','fa-triangle-exclamation');return;}
+  if(!start||!end){toast('Ange tider!','fa-triangle-exclamation');return;}
+  if(toMin(start)>=toMin(end)){toast('Sluttid måste vara efter starttid!','fa-triangle-exclamation');return;}
+  schema[day].push({start,end,subject,teacher});
+  schema[day].sort((a,b)=>toMin(a.start)-toMin(b.start));
+  save();renderSchema();buildSidebarDays();
+  document.getElementById('nSubject').value='';document.getElementById('nTeacher').value='';
+  logChange(`Lade till ${subject} (${day})`);toast(`${subject} tillagd på ${day}!`,'fa-check');
+  if(isMobile()){document.getElementById('mAdminContent').innerHTML=buildMNyHTML();}
+}
+function renderDaysGrid(){
+  const grid=document.getElementById('daysGrid');if(!grid)return;grid.innerHTML='';
+  SCHOOL_DAYS.forEach(day=>{
+    const isOff=disabled[day],lbl=dayLabels[day]||'';
+    const card=document.createElement('div');
+    card.className='day-manage-card'+(isOff?' disabled':'');
+    card.innerHTML=`<div class="day-mc-head"><h3>${day}</h3><label class="toggle-day"><input type="checkbox" ${isOff?'':'checked'} onchange="toggleDay('${day}',this.checked)"><span class="toggle-track"></span></label></div><div class="day-mc-meta">${schema[day].length} lektioner &nbsp;·&nbsp;${isOff?'<span style="color:var(--accent2)">Stängd</span>':'<span style="color:var(--accent3)">Aktiv</span>'}</div><div style="margin-top:8px;font-size:12px;color:var(--muted2);display:flex;align-items:center;gap:5px;">${isOff?'<i class="fa-solid fa-door-closed" style="color:var(--accent2)"></i> Visas som stängd dag':'<i class="fa-solid fa-circle-check" style="color:var(--accent3)"></i> Visas normalt i schemat'}</div>${isOff?`<div style="margin-top:12px;"><label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:5px;"><i class="fa-solid fa-tag" style="margin-right:4px;"></i>Text som visas</label><input class="label-input" placeholder="t.ex. Studiedag, Lov…" value="${lbl}" oninput="updateLabel('${day}',this.value)"></div>`:''}`;
+    grid.appendChild(card);
+  });
+}
+function updateLabel(day,val){dayLabels[day]=val;save();renderSchema();if(isMobile())renderMobileLessons();}
+function toggleDay(day,active){
+  disabled[day]=!active;save();renderSchema();renderDaysGrid();buildSidebarDays();
+  if(isMobile()){renderMobileDayTabs();renderMobileLessons();document.getElementById('mAdminContent').innerHTML=buildMDagarHTML();}
+  logChange(`${active?'Aktiverade':'Stängde'} ${day}`);
+  toast(`${day} ${active?'aktiverad':'stängd'}`,active?'fa-circle-check':'fa-door-closed');
+}
+function renderColorGrid(){
+  const grid=document.getElementById('colorGrid');if(!grid)return;grid.innerHTML='';
+  const subjects=new Set();Object.values(schema).forEach(d=>d.forEach(l=>subjects.add(l.subject)));
+  subjects.forEach(s=>{
+    const col=colors[s]||'#9ca3af';
+    const card=document.createElement('div');card.className='color-card';
+    card.innerHTML=`<div class="col-swatch" style="background:${col}" id="sw-${s}"></div><div class="col-info"><strong>${s}</strong><small id="cl-${s}">${col}</small></div><input type="color" class="col-picker" value="${col}" oninput="updateColor('${s}',this.value)">`;
+    grid.appendChild(card);
+  });
+}
+function updateColor(s,hex){
+  colors[s]=hex;
+  const sw=document.getElementById('sw-'+s),cl=document.getElementById('cl-'+s);
+  if(sw)sw.style.background=hex;if(cl)cl.textContent=hex;
+  save();renderSchema();
+}
+
+// ── INIT ──
+document.getElementById('loginCode').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+
+if(isMobile()){
+  mShowView('schema');
+} else {
+  showView('schema');
+}
+
+setInterval(()=>{updateLive();updateMobileLive();},30000);
+updateMobileLive();
 </script>
 </body>
 </html>
