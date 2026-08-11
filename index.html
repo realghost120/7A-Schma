@@ -391,7 +391,7 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 /* Mobile lesson list */
 #mobileLessonList{
   padding:12px 14px;
-  padding-bottom:90px; /* space for bottom nav */
+  padding-bottom:90px;
 }
 
 .m-day-label{
@@ -756,14 +756,10 @@ let confettiFired = false;
 
 function updateCountdown() {
   const now = new Date();
-  let targetYear = now.getFullYear();
-  let targetDate = new Date(targetYear, 7, 1, 9, 30, 0); // Testar med 1 Aug
-
-  // Om datumet i år redan har passerats, sätt mål till nästa år
-  if (now > targetDate && (now - targetDate) > 86400000) {
-    targetYear++;
-    targetDate = new Date(targetYear, 7, 17, 9, 30, 0);
-  }
+  
+  // Månad i JS är 0-indexerad (0 = Jan, 7 = Aug).
+  // Sätter måldatum till 17 Augusti kl 09:30:00 i år.
+  const targetDate = new Date(now.getFullYear(), 7, 17, 9, 30, 0);
 
   const diff = targetDate - now;
 
