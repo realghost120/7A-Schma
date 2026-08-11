@@ -510,6 +510,27 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
 </head>
 <body>
 
+  <div id="schoolCountdownBanner">
+  <div id="countdownBox">
+    <div class="cd-title"><i class="fa-solid fa-graduation-cap"></i> Skolstart 17 augusti kl 09:30</div>
+    <div class="cd-timer">
+      <div class="cd-unit"><span class="cd-num" id="cdDays">00</span><span class="cd-lbl">Dagar</span></div>
+      <span class="cd-colon">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdHours">00</span><span class="cd-lbl">Timmar</span></div>
+      <span class="cd-colon">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdMins">00</span><span class="cd-lbl">Min</span></div>
+      <span class="cd-colon">:</span>
+      <div class="cd-unit"><span class="cd-num" id="cdSecs">00</span><span class="cd-lbl">Sek</span></div>
+    </div>
+  </div>
+  
+  <div id="liveEventBox">
+    <div class="live-big-title">LYCKA TILL! 🎉</div>
+    <div class="live-sub-title"><i class="fa-solid fa-spinner fa-spin"></i> Inväntar nytt schema!</div>
+  </div>
+</div>
+
+  
 <!-- ══════════ MOBILE HEADER ══════════ -->
 <div id="mobileHeader">
   <div class="mhdr-brand">
@@ -1150,6 +1171,64 @@ function updateColor(s,hex){
   save();renderSchema();
 }
 
+/* ═══════════════════ COUNTDOWN & LIVE EVENT LOGIC ═══════════════════ */
+let confettiFired = false;
+
+function updateCountdown() {
+  const now = new Date();
+  
+  // 7 = Augusti i JavaScript (eftersom januari är 0)
+  const targetDate = new Date(now.getFullYear(), 7, 17, 9, 30, 0);
+
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    // Om tiden har passerats visas live-boxen
+    document.getElementById('countdownBox').style.display = 'none';
+    document.getElementById('liveEventBox').style.display = 'block';
+
+    if (!confettiFired) {
+      fireConfetti();
+      confettiFired = true;
+    }
+  } else {
+    // Om det finns tid kvar räknar den ner
+    document.getElementById('countdownBox').style.display = 'block';
+    document.getElementById('liveEventBox').style.display = 'none';
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('cdDays').innerText = String(d).padStart(2, '0');
+    document.getElementById('cdHours').innerText = String(h).padStart(2, '0');
+    document.getElementById('cdMins').innerText = String(m).padStart(2, '0');
+    document.getElementById('cdSecs').innerText = String(s).padStart(2, '0');
+  }
+}
+
+function fireConfetti() {
+  if (typeof confetti === 'function') {
+    const duration = 5 * 1000;
+    const animationEnd = Date.now() + duration;
+
+    (function frame() {
+      confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+      confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+
+      if (Date.now() < animationEnd) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }
+}
+
+// Starta timern och uppdatera varje sekund
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+  
 // ── INIT ──
 document.getElementById('loginCode').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 
