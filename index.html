@@ -506,6 +506,137 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   .sidebar-item{width:auto;padding:7px 13px;flex-shrink:0;}
   #week{grid-template-columns:repeat(3,1fr);}
 }
+
+    /* Huvudbehållaren */
+#schoolCountdownBanner {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+/* Nedräkningssektionen */
+#countdownBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.cd-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #f9d423; /* Snygg gul accentfärg */
+}
+
+.cd-title i {
+  margin-right: 8px;
+}
+
+/* Själva timern */
+.cd-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 65px;
+}
+
+.cd-num {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cd-lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+.cd-colon {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 10px;
+  padding-bottom: 20px; /* För att centrera kolonet med siffrorna */
+  opacity: 0.5;
+}
+
+/* Event-rutan (visas när tiden är ute) */
+#liveEventBox {
+  display: none; /* Ändra till display: block i JS när tiden är ute */
+  padding: 20px 0;
+}
+
+.live-big-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f9d423;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite; /* Lätt pulserande effekt */
+}
+
+.live-sub-title {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.live-sub-title i {
+  margin-right: 8px;
+}
+
+/* Pulserande animation för 'LYCKA TILL!' */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsiv design för mindre skärmar (mobiler) */
+@media (max-width: 480px) {
+  #schoolCountdownBanner {
+    padding: 15px;
+  }
+  
+  .cd-timer {
+    padding: 10px 15px;
+  }
+  
+  .cd-num {
+    font-size: 1.8rem;
+  }
+  
+  .cd-unit {
+    min-width: 50px;
+  }
+  
+  .cd-colon {
+    font-size: 1.5rem;
+    margin: 0 5px;
+    padding-bottom: 15px;
+  }
+}
+    
 </style>
 </head>
 <body>
