@@ -582,60 +582,134 @@ input:checked+.toggle-track::after{transform:translateX(19px);background:var(--a
   opacity: 0.5;
 }
 
-/* Event-rutan (visas när tiden är ute) */
+/* Huvudbehållare - Anpassad för alla skärmstorlekar */
+#schoolCountdownBanner {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #ffffff;
+  padding: 20px 15px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  max-width: 500px;
+  width: 90%; /* Ser till att den inte slår emot skärmkanterna på mobil */
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+/* Nedräkningssektionen */
+#countdownBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Rubriken - Skalar mjukt mellan mobil och dator */
+.cd-title {
+  font-size: clamp(0.95rem, 4vw, 1.25rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #f9d423;
+  line-height: 1.3;
+}
+
+.cd-title i {
+  margin-right: 6px;
+}
+
+/* Timern - Använder flex så att allt får plats på en rad */
+.cd-timer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4px;
+}
+
+/* Varje tidsbox får ett eget kort */
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px); /* Snygg glaseffekt */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px 4px;
+  flex: 1; /* Alla kort tar exakt lika mycket plats */
+  min-width: 0; /* Förhindrar att text trycks ut utanför skärmen */
+}
+
+/* Dynamiska siffror som krymper vid behov */
+.cd-num {
+  font-size: clamp(1.3rem, 6vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* Etiketter (Dagar, Timmar, osv) */
+.cd-lbl {
+  font-size: clamp(0.6rem, 2.3vw, 0.75rem);
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Kolon mellan rutorna */
+.cd-colon {
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  font-weight: bold;
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* Event-rutan når nedräkningen är klar */
 #liveEventBox {
-  display: none; /* Ändra till display: block i JS när tiden är ute */
-  padding: 20px 0;
+  display: none;
+  padding: 15px 0;
 }
 
 .live-big-title {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: clamp(1.8rem, 7vw, 2.5rem);
+  font-weight: 800;
   color: #f9d423;
-  margin-bottom: 10px;
-  animation: pulse 2s infinite; /* Lätt pulserande effekt */
+  margin-bottom: 8px;
+  animation: pulse 2s infinite;
 }
 
 .live-sub-title {
-  font-size: 1.2rem;
+  font-size: clamp(0.95rem, 3.8vw, 1.2rem);
   opacity: 0.9;
 }
 
 .live-sub-title i {
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
-/* Pulserande animation för 'LYCKA TILL!' */
+/* Animation för live-titel */
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
 
-/* Responsiv design för mindre skärmar (mobiler) */
-@media (max-width: 480px) {
-  #schoolCountdownBanner {
-    padding: 15px;
+/* Anpassning för riktigt små skärmar (under 350px bredd) */
+@media (max-width: 350px) {
+  .cd-colon {
+    display: none; /* Döljer kolonen helt för att spara plats */
   }
   
   .cd-timer {
-    padding: 10px 15px;
-  }
-  
-  .cd-num {
-    font-size: 1.8rem;
-  }
-  
-  .cd-unit {
-    min-width: 50px;
-  }
-  
-  .cd-colon {
-    font-size: 1.5rem;
-    margin: 0 5px;
-    padding-bottom: 15px;
+    gap: 6px;
   }
 }
+
+
     
 </style>
 </head>
